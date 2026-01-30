@@ -13,36 +13,16 @@
             --spotify-grey: #b3b3b3;
         }
         body { margin: 0; background-color: var(--spotify-black); color: white; font-family: 'Montserrat', sans-serif; padding-bottom: 120px; overflow-x: hidden; }
-        
-        /* Cabeçalho com sua foto */
         .header-container { display: flex; align-items: flex-end; padding: 60px 30px; background: linear-gradient(transparent, rgba(0,0,0,0.9)), #454545; gap: 25px; flex-wrap: wrap; }
         .capa-album { width: 230px; height: 230px; box-shadow: 0 8px 40px rgba(0,0,0,0.8); background: url('foto-perfil.png') center/cover; border-radius: 4px; }
         .header-info h1 { font-size: clamp(2.5rem, 6vw, 5rem); margin: 10px 0; font-weight: 700; }
         .header-info p { color: white; font-weight: bold; font-size: 0.9rem; margin: 0; }
-        
-        /* Contador de tempo verde */
         .stats { padding: 20px 30px; color: var(--spotify-green); font-weight: bold; font-size: 1.1rem; }
-        
-        /* Player do Spotify */
         .spotify-player { padding: 10px 30px; max-width: 800px; }
-        
-        /* Seção de motivos */
-        .section-title { padding: 0 30px; margin-top: 40px; font-size: 1.5rem; }
         .grid-motivos { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 20px; padding: 20px 30px; }
-        .card-motivo { background: var(--spotify-light-black); padding: 20px; border-radius: 8px; border: 1px solid transparent; transition: 0.3s; }
-        .card-motivo:hover { background: #282828; border-color: #333; }
-        .card-motivo h3 { margin: 0; font-size: 1rem; color: white; }
-        .card-motivo p { color: var(--spotify-grey); font-size: 0.85rem; margin-top: 10px; line-height: 1.5; }
-
-        /* Barra inferior estilo player */
+        .card-motivo { background: var(--spotify-light-black); padding: 20px; border-radius: 8px; border: 1px solid transparent; }
         .bottom-bar { position: fixed; bottom: 0; width: 100%; background: #000; border-top: 1px solid #282828; padding: 15px 30px; display: flex; justify-content: space-between; align-items: center; box-sizing: border-box; z-index: 100; }
-        .song-details h4 { margin: 0; font-size: 0.9rem; color: white; }
-        .song-details p { margin: 0; font-size: 0.75rem; color: var(--spotify-grey); }
-
-        @media (max-width: 600px) {
-            .header-container { justify-content: center; text-align: center; }
-            .capa-album { width: 180px; height: 180px; }
-        }
+        @media (max-width: 600px) { .header-container { justify-content: center; text-align: center; } .capa-album { width: 180px; height: 180px; } }
     </style>
 </head>
 <body>
@@ -52,67 +32,55 @@
         <div class="header-info">
             <p>PLAYLIST PÚBLICA</p>
             <h1>Nossa História</h1>
-            <p>Feito com amor por Você • <span id="days-count">0</span> dias juntos</p>
+            <p>Feito com amor por Você • <span id="days-count">6</span> dias juntos</p>
         </div>
     </div>
 
     <div class="stats">
-        ▶ <span id="timer">Calculando nossa sintonia...</span>
+        ▶ <span id="timer">Carregando segundos de amor...</span>
     </div>
 
     <div class="spotify-player">
-        <iframe style="border-radius:12px" src="https://www.google.com/search?q=https://open.spotify.com/track/" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+        <iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/3YfS2X7pZ669N69v99Sip1?utm_source=generator&theme=0" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
     </div>
 
-    <h2 class="section-title">Motivos para amar você</h2>
+    <h2 style="padding: 0 30px;">Motivos para amar você</h2>
     <div class="grid-motivos">
         <div class="card-motivo">
-            <h3>Seu Sorriso</h3>
-            <p>A melodia que alegra todos os meus dias.</p>
+            <h3 style="color:white">Seu Sorriso</h3>
+            <p style="color:var(--spotify-grey)">A melodia que alegra todos os meus dias.</p>
         </div>
         <div class="card-motivo">
-            <h3>Seu Apoio</h3>
-            <p>A base perfeita para qualquer música que a gente escrever.</p>
+            <h3 style="color:white">Seu Apoio</h3>
+            <p style="color:var(--spotify-grey)">A base perfeita para qualquer música que a gente escrever.</p>
         </div>
         <div class="card-motivo">
-            <h3>Nosso Jeito</h3>
-            <p>A sintonia que ninguém mais consegue imitar.</p>
+            <h3 style="color:white">Nosso Jeito</h3>
+            <p style="color:var(--spotify-grey)">A sintonia que ninguém mais consegue imitar.</p>
         </div>
     </div>
 
     <div class="bottom-bar">
-        <div class="song-details">
-            <h4>Tocando agora: O Amor da Minha Vida</h4>
-            <p>Artista: Nós Dois</p>
+        <div>
+            <h4 style="margin:0; font-size:0.9rem">Tocando agora: O Amor da Minha Vida</h4>
+            <p style="margin:0; font-size:0.75rem; color:var(--spotify-grey)">Artista: Nós Dois</p>
         </div>
-        <div style="color: var(--spotify-green); font-size: 1.5rem; letter-spacing: 5px;">
-            ⏮ ⏸ ⏭
-        </div>
-        <div style="width: 20%; height: 4px; background: #333; border-radius: 2px; display: flex; align-items: center;">
-            <div style="width: 75%; height: 100%; background: var(--spotify-green);"></div>
-        </div>
+        <div style="color: var(--spotify-green); font-size: 1.5rem; letter-spacing: 5px;">⏮ ⏸ ⏭</div>
     </div>
 
     <script>
-        // DATA DE INÍCIO (Corrigida para evitar o erro NaN)
         const dataInicio = new Date("January 24, 2026 00:00:00"); 
 
         function atualizarContador() {
             const agora = new Date();
             const diferenca = agora - dataInicio;
-
-            // Cálculos
             const dias = Math.floor(diferenca / (1000 * 60 * 60 * 24));
             const horas = Math.floor((diferenca / (1000 * 60 * 60)) % 24);
             const minutos = Math.floor((diferenca / (1000 * 60)) % 60);
             const segundos = Math.floor((diferenca / 1000) % 60);
-
-            // Inserir no site
             document.getElementById("days-count").innerText = dias;
             document.getElementById("timer").innerText = `${dias} dias, ${horas}h, ${minutos}m e ${segundos}s de sintonia absoluta`;
         }
-
-        // Atualiza a cada 1 segundo
         setInterval(atualizarContador, 1000);
         atualizarContador();
     </script>
