@@ -18,47 +18,56 @@
             background-color: var(--spotify-black);
             color: white;
             font-family: 'Montserrat', sans-serif;
+            padding-bottom: 120px; /* Espaço para a barra de baixo não cobrir o conteúdo */
         }
 
-        /* Header - Estilo Álbum */
+        /* Header - Estilo Spotify */
         .header-container {
             display: flex;
             align-items: flex-end;
             padding: 60px 30px;
-            background: linear-gradient(transparent, rgba(0,0,0,0.5)), #454545;
-            gap: 20px;
+            background: linear-gradient(transparent, rgba(0,0,0,0.8)), #454545;
+            gap: 25px;
+            flex-wrap: wrap;
         }
 
         .capa-album {
             width: 230px;
             height: 230px;
-            box-shadow: 0 4px 60px rgba(0,0,0,0.5);
-            background: url('foto-perfil.png') center/cover; /* <--- COLOQUE SUA FOTO AQUI */
+            box-shadow: 0 8px 40px rgba(0,0,0,0.8);
+            background: url('foto-perfil.png') center/cover; 
+            border-radius: 4px;
         }
 
-        .header-info h1 { font-size: 6rem; margin: 10px 0; }
-        .header-info p { color: var(--spotify-grey); font-weight: bold; }
+        .header-info h1 { 
+            font-size: clamp(2.5rem, 6vw, 5rem); 
+            margin: 10px 0; 
+            font-weight: 700;
+        }
+        
+        .header-info p { color: white; font-weight: bold; font-size: 0.9rem; }
+        .header-info .meta { color: var(--spotify-grey); }
 
         /* Contador */
-        .stats { padding: 20px 30px; color: var(--spotify-green); font-weight: bold; font-size: 1.2rem; }
+        .stats { 
+            padding: 20px 30px; 
+            color: var(--spotify-green); 
+            font-weight: bold; 
+            font-size: 1.1rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
 
-
-        <div class="stats">
-    ▶ <span id="timer">Calculando...</span>
-</div>
-
-<div style="padding: 0 30px;">
-    <iframe style="border-radius:12px" src="<iframe data-testid="embed-iframe" style="border-radius:12px" src="https://open.spotify.com/embed/track/5qs4taTnXYTWexiDL0Vp8s?utm_source=generator" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
-</div>
-
-
-        
+        /* Seção do Player */
+        .spotify-player { padding: 10px 30px; }
 
         /* Grid de Motivos */
-        .section-title { padding: 0 30px; margin-top: 40px; }
+        .section-title { padding: 0 30px; margin-top: 40px; font-size: 1.5rem; }
+        
         .grid-motivos {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
             gap: 20px;
             padding: 20px 30px;
         }
@@ -68,28 +77,34 @@
             padding: 20px;
             border-radius: 8px;
             transition: background 0.3s;
-            cursor: pointer;
         }
 
         .card-motivo:hover { background: #282828; }
-        .card-motivo h3 { margin: 0; font-size: 1rem; }
-        .card-motivo p { color: var(--spotify-grey); font-size: 0.9rem; margin-top: 10px; }
+        .card-motivo h3 { margin: 0; font-size: 1rem; color: white; }
+        .card-motivo p { color: var(--spotify-grey); font-size: 0.85rem; margin-top: 10px; line-height: 1.5; }
 
-        /* Player Fixo Embaixo */
-        .player-bar {
+        /* Barra de Controle Inferior (Visual) */
+        .bottom-bar {
             position: fixed;
             bottom: 0;
             width: 100%;
             background: #000;
+            border-top: 1px solid #282828;
             padding: 15px 30px;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            border-top: 1px solid #282828;
+            box-sizing: border-box;
+            z-index: 100;
         }
 
-        .song-info h4 { margin: 0; font-size: 0.9rem; }
-        .song-info p { margin: 0; font-size: 0.7rem; color: var(--spotify-grey); }
+        .song-details h4 { margin: 0; font-size: 0.9rem; color: white; }
+        .song-details p { margin: 0; font-size: 0.75rem; color: var(--spotify-grey); }
+
+        @media (max-width: 600px) {
+            .header-container { justify-content: center; text-align: center; }
+            .capa-album { width: 180px; height: 180px; }
+        }
     </style>
 </head>
 <body>
@@ -99,56 +114,63 @@
         <div class="header-info">
             <p>PLAYLIST PÚBLICA</p>
             <h1>Nossa História</h1>
-            <p>Feito com amor por Você • <span id="days-count">0</span> dias juntos</p>
+            <p class="meta">Criada por Você • <span id="days-count">0</span> dias juntos</p>
         </div>
     </div>
 
     <div class="stats">
-        ▶ <span id="timer">Calculando eternidade...</span>
+        <span>▶</span> <span id="timer">Sincronizando batimentos...</span>
     </div>
 
-    <h2 class="section-title">Motivos para te amar</h2>
+    <div class="spotify-player">
+        <iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/3ctI9mYp6A2Wn5Hw7pWv7s?utm_source=generator" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+    </div>
+
+    <h2 class="section-title">Motivos para amar você</h2>
     <div class="grid-motivos">
         <div class="card-motivo">
             <h3>Seu Sorriso</h3>
-            <p>A música mais bonita que eu já ouvi.</p>
+            <p>O melhor álbum que eu já ouvi na vida. Poderia ficar no repeat para sempre.</p>
         </div>
         <div class="card-motivo">
-            <h3>Seu Apoio</h3>
-            <p>O melhor "repeat" da minha vida.</p>
+            <h3>Sua Companhia</h3>
+            <p>A batida perfeita para os meus dias. Com você, tudo fica em harmonia.</p>
         </div>
         <div class="card-motivo">
-            <h3>Seu Jeito</h3>
-            <p>A batida perfeita para o meu coração.</p>
+            <h3>Nosso Amor</h3>
+            <p>Uma música que não tem fim, só fica cada vez melhor com o tempo.</p>
         </div>
-        </div>
+    </div>
 
-    <div class="player-bar">
-        <div class="song-info">
-            <h4>Nossa Música Favorita</h4>
+    <div class="bottom-bar">
+        <div class="song-details">
+            <h4>Tocando agora: Minha Vida</h4>
             <p>Artista: Nós Dois</p>
         </div>
-        <div style="color: var(--spotify-green); font-size: 1.5rem;">
-            ⏮  ⏸  ⏭
+        <div style="color: var(--spotify-green); font-size: 1.2rem;">
+            ⏮ &nbsp; ⏸ &nbsp; ⏭
         </div>
-        <div style="width: 200px; height: 4px; background: #4f4f4f; border-radius: 2px;">
-            <div style="width: 70%; height: 100%; background: var(--spotify-green);"></div>
+        <div style="width: 20%; height: 4px; background: #333; border-radius: 2px;">
+            <div style="width: 80%; height: 100%; background: var(--spotify-green);"></div>
         </div>
     </div>
 
     <script>
-        const dataInicio = new Date("2026-24-12T00:00:00"); // <--- AJUSTE A DATA AQUI (Ano-Mês-Dia)
+        // --- COLOQUE A DATA DO INÍCIO DO NAMORO AQUI ---
+        // Exemplo: "January 15, 2023" ou "December 25, 2022"
+        const dataIncio = new Date("January 24, 2026 00:00:00"); 
 
         function atualizarContador() {
             const agora = new Date();
-            const diff = agora - dataInicio;
-            
-            const dias = Math.floor(diff / (1000 * 60 * 60 * 24));
-            const horas = Math.floor((diff / (1000 * 60 * 60)) % 24);
-            const minutos = Math.floor((diff / 1000 / 60) % 60);
+            const diferenca = agora - dataIncio;
+
+            const dias = Math.floor(diferenca / (1000 * 60 * 60 * 24));
+            const horas = Math.floor((diferenca / (1000 * 60 * 60)) % 24);
+            const minutos = Math.floor((diferenca / (1000 * 60)) % 60);
+            const segundos = Math.floor((diferenca / 1000) % 60);
 
             document.getElementById("days-count").innerText = dias;
-            document.getElementById("timer").innerText = `${dias} dias, ${horas}h e ${minutos}m de sintonia absoluta`;
+            document.getElementById("timer").innerText = `${dias} dias, ${horas}h, ${minutos}m e ${segundos}s de amor infinito`;
         }
 
         setInterval(atualizarContador, 1000);
