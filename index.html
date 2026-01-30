@@ -3,63 +3,144 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Para o Meu Amor ❤️</title>
-    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Montserrat:wght@300;500&display=swap" rel="stylesheet">
+    <title>Nossa Playlist de Amor</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
     <style>
+        :root {
+            --spotify-green: #1DB954;
+            --spotify-black: #121212;
+            --spotify-light-black: #181818;
+            --spotify-grey: #b3b3b3;
+        }
+
         body {
             margin: 0;
-            font-family: 'Montserrat', sans-serif;
-            background-color: #fff5f5;
-            color: #333;
-            text-align: center;
-        }
-        header {
-            height: 100vh;
-            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('SUA-FOTO-AQUI.jpg'); /* Troque pelo link da foto */
-            background-size: cover;
-            background-position: center;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
+            background-color: var(--spotify-black);
             color: white;
+            font-family: 'Montserrat', sans-serif;
         }
-        h1 { font-family: 'Dancing Script', cursive; font-size: 5rem; margin-bottom: 10px; }
-        .contador { font-size: 1.5rem; background: rgba(255,255,255,0.2); padding: 15px; border-radius: 50px; }
-        section { padding: 50px 20px; }
-        .mensagem { max-width: 600px; margin: 0 auto; line-height: 1.6; font-style: italic; }
-        .coracao { color: #e74c3c; font-size: 2rem; }
+
+        /* Header - Estilo Álbum */
+        .header-container {
+            display: flex;
+            align-items: flex-end;
+            padding: 60px 30px;
+            background: linear-gradient(transparent, rgba(0,0,0,0.5)), #454545;
+            gap: 20px;
+        }
+
+        .capa-album {
+            width: 230px;
+            height: 230px;
+            box-shadow: 0 4px 60px rgba(0,0,0,0.5);
+            background: url('LINK_DA_SUA_FOTO_AQUI.jpg') center/cover; /* <--- COLOQUE SUA FOTO AQUI */
+        }
+
+        .header-info h1 { font-size: 6rem; margin: 10px 0; }
+        .header-info p { color: var(--spotify-grey); font-weight: bold; }
+
+        /* Contador */
+        .stats { padding: 20px 30px; color: var(--spotify-green); font-weight: bold; font-size: 1.2rem; }
+
+        /* Grid de Motivos */
+        .section-title { padding: 0 30px; margin-top: 40px; }
+        .grid-motivos {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 20px;
+            padding: 20px 30px;
+        }
+
+        .card-motivo {
+            background: var(--spotify-light-black);
+            padding: 20px;
+            border-radius: 8px;
+            transition: background 0.3s;
+            cursor: pointer;
+        }
+
+        .card-motivo:hover { background: #282828; }
+        .card-motivo h3 { margin: 0; font-size: 1rem; }
+        .card-motivo p { color: var(--spotify-grey); font-size: 0.9rem; margin-top: 10px; }
+
+        /* Player Fixo Embaixo */
+        .player-bar {
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            background: #000;
+            padding: 15px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-top: 1px solid #282828;
+        }
+
+        .song-info h4 { margin: 0; font-size: 0.9rem; }
+        .song-info p { margin: 0; font-size: 0.7rem; color: var(--spotify-grey); }
     </style>
 </head>
 <body>
 
-    <header>
-        <h1>Amo você, Camille</h1>
-        <div class="contador" id="timer">Carregando nosso tempo...</div>
-    </header>
+    <div class="header-container">
+        <div class="capa-album"></div>
+        <div class="header-info">
+            <p>PLAYLIST PÚBLICA</p>
+            <h1>Nossa História</h1>
+            <p>Feito com amor por Você • <span id="days-count">0</span> dias juntos</p>
+        </div>
+    </div>
 
-    <section>
-        <div class="coracao">❤️</div>
-        <h2>Por que eu te amo?</h2>
-        <p class="mensagem">
-            "Eu te amo porque encontrei em voce a forma mais pura de amor,o seu jeito cuidadoso,a forma que se preocupa com as pessoas ao seu redor, amulher inteligente e esforçada
-            que voce é, tudo isso junto da imensa felicidade q eu sinto quando estamos juntos torna muito facil te amar, se eu pudesse viver mais um milhao de vidas, em todas elas eu te escolheria
-            Colossenses 3:14, “Acima de tudo isto, porém, esteja o amor, que é o vínculo da perfeição.”
-    
-        </p>
-    </section>
+    <div class="stats">
+        ▶ <span id="timer">Calculando eternidade...</span>
+    </div>
+
+    <h2 class="section-title">Motivos para te amar</h2>
+    <div class="grid-motivos">
+        <div class="card-motivo">
+            <h3>Seu Sorriso</h3>
+            <p>A música mais bonita que eu já ouvi.</p>
+        </div>
+        <div class="card-motivo">
+            <h3>Seu Apoio</h3>
+            <p>O melhor "repeat" da minha vida.</p>
+        </div>
+        <div class="card-motivo">
+            <h3>Seu Jeito</h3>
+            <p>A batida perfeita para o meu coração.</p>
+        </div>
+        </div>
+
+    <div class="player-bar">
+        <div class="song-info">
+            <h4>Nossa Música Favorita</h4>
+            <p>Artista: Nós Dois</p>
+        </div>
+        <div style="color: var(--spotify-green); font-size: 1.5rem;">
+            ⏮  ⏸  ⏭
+        </div>
+        <div style="width: 200px; height: 4px; background: #4f4f4f; border-radius: 2px;">
+            <div style="width: 70%; height: 100%; background: var(--spotify-green);"></div>
+        </div>
+    </div>
 
     <script>
-        // Lógica do contador (Exemplo: Data do início do namoro)
-        const dataInicio = new Date("2026-24-12T00:00:00").getTime(); 
+        const dataInicio = new Date("2026-24-12T00:00:00"); // <--- AJUSTE A DATA AQUI (Ano-Mês-Dia)
 
-        setInterval(function() {
-            const agora = new Date().getTime();
-            const diferenca = agora - dataInicio;
+        function atualizarContador() {
+            const agora = new Date();
+            const diff = agora - dataInicio;
+            
+            const dias = Math.floor(diff / (1000 * 60 * 60 * 24));
+            const horas = Math.floor((diff / (1000 * 60 * 60)) % 24);
+            const minutos = Math.floor((diff / 1000 / 60) % 60);
 
-            const dias = Math.floor(diferenca / (1000 * 60 * 60 * 24));
-            document.getElementById("timer").innerHTML = dias + " dias de puro amor";
-        }, 1000);
+            document.getElementById("days-count").innerText = dias;
+            document.getElementById("timer").innerText = `${dias} dias, ${horas}h e ${minutos}m de sintonia absoluta`;
+        }
+
+        setInterval(atualizarContador, 1000);
+        atualizarContador();
     </script>
 </body>
 </html>
