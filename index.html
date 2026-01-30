@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Para o Meu Amor ❤️</title>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Montserrat:wght@300;500&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Montserrat', sans-serif;
+            background-color: #fff5f5;
+            color: #333;
+            text-align: center;
+        }
+        header {
+            height: 100vh;
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('SUA-FOTO-AQUI.jpg'); /* Troque pelo link da foto */
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: white;
+        }
+        h1 { font-family: 'Dancing Script', cursive; font-size: 5rem; margin-bottom: 10px; }
+        .contador { font-size: 1.5rem; background: rgba(255,255,255,0.2); padding: 15px; border-radius: 50px; }
+        section { padding: 50px 20px; }
+        .mensagem { max-width: 600px; margin: 0 auto; line-height: 1.6; font-style: italic; }
+        .coracao { color: #e74c3c; font-size: 2rem; }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Amo você, [Nome Dela]</h1>
+        <div class="contador" id="timer">Carregando nosso tempo...</div>
+    </header>
+
+    <section>
+        <div class="coracao">❤️</div>
+        <h2>Por que eu te amo?</h2>
+        <p class="mensagem">
+            "Escreva aqui um texto bem bonito sobre ela. Pode falar do sorriso, 
+            do jeito que ela te olha ou de como ela faz o seu dia melhor."
+        </p>
+    </section>
+
+    <script>
+        // Lógica do contador (Exemplo: Data do início do namoro)
+        const dataInicio = new Date("2023-01-12T00:00:00").getTime(); 
+
+        setInterval(function() {
+            const agora = new Date().getTime();
+            const diferenca = agora - dataInicio;
+
+            const dias = Math.floor(diferenca / (1000 * 60 * 60 * 24));
+            document.getElementById("timer").innerHTML = dias + " dias de puro amor";
+        }, 1000);
+    </script>
+</body>
+</html>
